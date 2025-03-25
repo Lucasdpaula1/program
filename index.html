@@ -259,19 +259,31 @@
         cursor: pointer;
         z-index: 2;
       }
+      .backgroundBook{
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSasmISRiEGnfWdpbjVEZwwr9UoIHh4B1vxvA&s');
+        
+        background-size: cover;
+        /* background-repeat: no-repeat; */
+        
+      }
+      .backgroundBookFirst{
+        background-image: url('/assets/letter.png');
+      }
       
       /* Media Queries para responsividade */
       @media (min-width: 400px) and (max-width: 600px) {
         .message, .first-message {
           font-size: 1.8rem;
+          top: 15%;
            
         }
         .first-message{
             left: 5%;
-            top: 25%;
+            /* top: 15%; */
         }
+       
         .book {
-          height: 350px;
+          height: 250px;
         }
         
         .message-to-elena {
@@ -284,27 +296,37 @@
             opacity: 1;
             animation: blink 1s infinite;
             left: 5%;
-            top: 25%;
+            top: 15%;
             
+        }
+        .message{
+          top: 15%;
+        }
+        .book{
+          height: 200px;
         }
       }
       @media (min-width: 601px) {
         .message, .first-message {
           font-size: 2rem;
         }
+        .first-message{
+          top: -10%;
+        }
         
         .book {
-          width: 32%;
-          height: 200px;
+          width: 32%; 
+          
+          height: 300px;
         }
         
         .message-to-elena {
           font-size: 1.5rem;
         }
-        
+      
         .icon-arrow {
           top: 10%;
-          left: 10%;
+          left: 2%;
           transform: translate(250%,400%);
         }
       }
@@ -414,15 +436,19 @@
 
         requestAnimationFrame(animate);
       }
+     
       
       function flip(){
         const book = document.querySelector('.book');
-        book.style.backgroundImage = 'none';
+        // book.style.backgroundImage = 'none';
         const buttonFlip = document.getElementById('flip');
         buttonFlip.style.visibility = 'hidden';
         const message = document.querySelector('.message-to-elena');
+        const time = 8000
         message.style.display = 'block';
-        
+       
+        book.classList.remove('backgroundBookFirst')
+        book.classList.add('backgroundBook')
         setTimeout(()=>{
           const secondSpan = document.getElementById('second-span');
           const words = [
@@ -441,6 +467,7 @@
           function typeEffect() {
             if(sizeCount >= maxLoops){
               const p = document.querySelector('.message-to-elena');
+              'Eu dou inicio a esta carta agradecendo por tudo que aconteceu,pela pessoa que você é e pela pessoa que se tornará. nunca fui muito bom com as palavras mas ao te conhecer pude entender '
               p.textContent = 'Querida, Marcelena : Neste dia especial, quero lhe desejar toda a felicidade do mundo. Você é uma pessoa incrível, forte e cheia de luz. Espero que este dia seja tão maravilhoso quanto você DE: L.S PARA : M.M';
               return;
             }
@@ -469,7 +496,7 @@
           }
           
           typeEffect();
-        }, 8000);
+        }, time);
       }
       
       flipButton.addEventListener('click', flip);
@@ -507,7 +534,10 @@
         const message = document.querySelector('.message-to-elena');
         
         message.style.display = 'none';
-        book.style.backgroundImage = "url('/assets/letter.png')";
+        book.classList.remove('backgroundBook')
+        book.classList.add('backgroundBookFirst')
+
+        // book.style.backgroundImage = "url('/assets/letter.png')";
         book.style.opacity = '0';
         ctx.style.visibility = 'visible';
         buttonFlip.style.visibility = 'visible';
@@ -527,7 +557,7 @@
 
       window.addEventListener("scroll", () => {
         scrollProgress = window.scrollY / window.innerHeight;
-        if (scrollProgress > 0.5) {
+        if (scrollProgress > 0.2) {
           message.style.opacity = "1";
           firstMessage.style.opacity = "0";
           firstMessage.style.animation = 'none';
