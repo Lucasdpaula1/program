@@ -267,7 +267,7 @@
         
       }
       .backgroundBookFirst{
-        background-image: url('/assets/letter.png');
+        background-image: url('/program/image/letter.png');
       }
       
       /* Media Queries para responsividade */
@@ -310,9 +310,7 @@
         .message, .first-message {
           font-size: 2rem;
         }
-        .first-message{
-          top: -10%;
-        }
+     
         
         .book {
           width: 32%; 
@@ -444,7 +442,7 @@
         const buttonFlip = document.getElementById('flip');
         buttonFlip.style.visibility = 'hidden';
         const message = document.querySelector('.message-to-elena');
-        const time = 8000
+        
         message.style.display = 'block';
        
         book.classList.remove('backgroundBookFirst')
@@ -496,7 +494,7 @@
           }
           
           typeEffect();
-        }, time);
+        }, 8000);
       }
       
       flipButton.addEventListener('click', flip);
@@ -537,7 +535,7 @@
         book.classList.remove('backgroundBook')
         book.classList.add('backgroundBookFirst')
 
-        // book.style.backgroundImage = "url('/assets/letter.png')";
+        // book.style.backgroundImage = "url('PROGRAM/image/letter.png')";
         book.style.opacity = '0';
         ctx.style.visibility = 'visible';
         buttonFlip.style.visibility = 'visible';
