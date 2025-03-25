@@ -2,6 +2,9 @@
 <html lang="pt">
   <head>
     <meta charset="UTF-8" />
+    <meta name="theme-color" content="#8B008B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
@@ -17,7 +20,14 @@
         height: 200vh;
         overflow-x: hidden;
         overflow-y: scroll;
+       
       }
+      @media (color-gamut: p3) {
+  :root {
+    --cor-roxo: color(display-p3 0.54 0.0 0.54); /* Equivalente P3 de #8B008B */
+    --cor-rosa: color(display-p3 1.0 0.4 0.7);   /* Equivalente P3 de #ff69b4 */
+  }
+}
       .content {
         height: 200vh;
         display: flex;
@@ -41,6 +51,7 @@
         transform: translate(-50%, -50%);
         font-size: 1.5rem;
         color: #ff69b4;
+        color: color(display-p3 1.0 0.4 0.7);
         opacity: 0;
         transition: opacity 1s;
         text-align: center;
@@ -66,6 +77,8 @@
         transform: translate(-50%, -50%);
         font-size: 1.5rem;
         color: #ff69b4;
+        color: color(display-p3 1.0 0.4 0.7);
+        /* color: black; */
         opacity: 1;
         transition: opacity 1s;
         z-index: 1;
@@ -116,6 +129,7 @@
       }
       .button-ver-mais:hover{
         background: #ff69b4;
+        
       }
       
       .icon-arrow{
@@ -158,6 +172,8 @@
         display: none;
         font-family: "Dancing Script", cursive;
         color: #ff69b4;
+        color: color(display-p3 1.0 0.4 0.7);
+        /* color: black; */
         font-size: 1rem;
         padding: 20px;
         text-align: center;
@@ -278,10 +294,10 @@
            
         }
         .first-message{
-            left: 5%;
-            /* top: 15%; */
+          left: 5%;
+          /* top: 15%; */
         }
-       
+        
         .book {
           height: 250px;
         }
@@ -289,16 +305,24 @@
         .message-to-elena {
           font-size: 1.2rem;
         }
+        .button-ver-mais{
+          background-color:  #ff69b4;
+        }
       }
       @media (min-width:300px) and (max-width:400px)
       {
-        .first-message{
-            opacity: 1;
-            animation: blink 1s infinite;
-            left: 5%;
-            top: 15%;
-            
+        .button-ver-mais{
+          background-color:  #ff69b4;
         }
+        .first-message{
+          opacity: 1;
+          animation: blink 1s infinite;
+          left: 5%;
+          
+          top: 15%;
+          
+        }
+        
         .message{
           top: 15%;
         }
@@ -310,7 +334,7 @@
         .message, .first-message {
           font-size: 2rem;
         }
-     
+        
         
         .book {
           width: 32%; 
